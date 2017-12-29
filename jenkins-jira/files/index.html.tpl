@@ -6,9 +6,9 @@
 <body>
 
 <ul>
-<li><a href="//jenkins.DOMAIN_NAME">Jenkins</a></li>
-<li><a href="//jira.DOMAIN_NAME">JIRA</a></li>
-<li><a href="//gogs.DOMAIN_NAME">gogs</a></li>
+<li><a href="//jenkins.$DOMAIN$">Jenkins</a></li>
+<li><a href="//jira.$DOMAIN$">JIRA</a></li>
+<li><a href="//gogs.$DOMAIN$">gogs</a></li>
 </ul>
 
 </body>

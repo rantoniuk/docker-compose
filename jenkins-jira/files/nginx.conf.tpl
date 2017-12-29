@@ -11,7 +11,7 @@ server {
 }
 
 server {
-  server_name jira.DOMAIN_NAME;
+  server_name jira.$DOMAIN$;
   location / {
     proxy_pass http://jira:8080;
     proxy_set_header Host $host;
@@ -24,7 +24,7 @@ server {
 }
 
 server {
-  server_name gogs.DOMAIN_NAME;
+  server_name gogs.$DOMAIN$;
   location / {
     proxy_pass http://gogs:3000;
     proxy_set_header Host $host;
@@ -37,7 +37,7 @@ server {
 }
 
 server {
-  server_name jenkins.DOMAIN_NAME;
+  server_name jenkins.$DOMAIN$;
   location / {
     proxy_set_header        Host $host:$server_port;
     proxy_set_header        X-Real-IP $remote_addr;
@@ -48,13 +48,13 @@ server {
     proxy_pass          http://jenkins:8080;
     proxy_read_timeout  90;
 
-    proxy_redirect      http://jenkins:8080 http://jenkins.DOMAIN_NAME;
+    proxy_redirect      http://jenkins:8080 http://jenkins.$DOMAIN$;
 
     # Required for new HTTP-based CLI
     proxy_http_version 1.1;
     proxy_request_buffering off;
     # workaround for https://issues.jenkins-ci.org/browse/JENKINS-45651
-    add_header 'X-SSH-Endpoint' 'jenkins.DOMAIN_NAME' always;
+    add_header 'X-SSH-Endpoint' 'jenkins.$DOMAIN$' always;
   }
 
 }

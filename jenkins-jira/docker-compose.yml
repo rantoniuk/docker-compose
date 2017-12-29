@@ -7,27 +7,14 @@ services:
     ports:
       - "80:80"
     environment:
-      DOMAIN_NAME: ${DOMAIN_NAME}
+      DOMAIN: ${DOMAIN}
     volumes:
       - ./files:/files
-
-#  crowd:
-#    image: blacklabelops/crowd
-#    volumes:
-#      - crowd-data:/var/atlassian/crowd
-#    environment:
-#      CROWD_URL: http://localhost:8095/crowd
-#      CROWD_PROXY_NAME: crowd.${REVERSE_PROXY_DOMAIN_NAME}
-#      CROWD_PROXY_PORT: 443
-#      CROWD_PROXY_SCHEME: https
-#      CROWD_PROXY_SECURE: "true"
-#      LOGIN_BASE_URL: https://crowd.${REVERSE_PROXY_DOMAIN_NAME}
-#      CROWD_CONTEXT: crowd
 
   jira:
     image: cptactionhank/atlassian-jira-software
     environment:
-      X_PROXY_NAME: jira.${DOMAIN_NAME}
+      X_PROXY_NAME: jira.${DOMAIN}
       X_PROXY_PORT: 80
       X_PROXY_SCHEME: http
     volumes:
